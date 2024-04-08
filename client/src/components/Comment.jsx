@@ -16,6 +16,7 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
         const res = await fetch(`/api/user/${comment.userId}`);
         const data = await res.json();
         if (res.ok) {
+          console.log(data);
           setUser(data);
         }
       } catch (error) {

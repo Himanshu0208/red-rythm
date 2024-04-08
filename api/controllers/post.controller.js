@@ -2,9 +2,7 @@ import Post from '../models/post.model.js';
 import { errorHandler } from '../utils/error.js';
 
 export const create = async (req, res, next) => {
-  if (!req.user.isAdmin) {
-    return next(errorHandler(403, 'You are not allowed to create a post'));
-  }
+
   if (!req.body.title || !req.body.content) {
     return next(errorHandler(400, 'Please provide all required fields'));
   }
@@ -27,6 +25,7 @@ export const create = async (req, res, next) => {
 };
 
 export const getposts = async (req, res, next) => {
+  console.log(req.query);
   try {
     const startIndex = parseInt(req.query.startIndex) || 0;
     const limit = parseInt(req.query.limit) || 9;
@@ -47,7 +46,12 @@ export const getposts = async (req, res, next) => {
       .skip(startIndex)
       .limit(limit);
 
-    const totalPosts = await Post.countDocuments();
+    if(req.query.postId) {
+      posts[0].views += 1;
+      console.log(posts[0]);
+      posts[0].save();
+    }
+    const totalPosts = posts.length;
 
     const now = new Date();
 
@@ -61,6 +65,11 @@ export const getposts = async (req, res, next) => {
       createdAt: { $gte: oneMonthAgo },
     });
 
+    // console.log({
+    //   posts,
+    //   totalPosts,
+    //   lastMonthPosts,
+    // });
     res.status(200).json({
       posts,
       totalPosts,
@@ -72,7 +81,7 @@ export const getposts = async (req, res, next) => {
 };
 
 export const deletepost = async (req, res, next) => {
-  if (!req.user.isAdmin || req.user.id !== req.params.userId) {
+  if (req.user.id !== req.params.userId) {
     return next(errorHandler(403, 'You are not allowed to delete this post'));
   }
   try {
@@ -84,7 +93,7 @@ export const deletepost = async (req, res, next) => {
 };
 
 export const updatepost = async (req, res, next) => {
-  if (!req.user.isAdmin || req.user.id !== req.params.userId) {
+  if (req.user.id !== req.params.userId) {
     return next(errorHandler(403, 'You are not allowed to update this post'));
   }
   try {

@@ -6,7 +6,7 @@ import CommentSection from '../components/CommentSection';
 import PostCard from '../components/PostCard';
 
 export default function PostPage() {
-  const { postSlug } = useParams();
+  const { postId } = useParams();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [post, setPost] = useState(null);
@@ -15,8 +15,9 @@ export default function PostPage() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
+        console.log("postId :", postId);
         setLoading(true);
-        const res = await fetch(`/api/post/getposts?slug=${postSlug}`);
+        const res = await fetch(`/api/post/getposts?postId=${postId}`);
         const data = await res.json();
         if (!res.ok) {
           setError(true);
@@ -24,6 +25,8 @@ export default function PostPage() {
           return;
         }
         if (res.ok) {
+          console.log("posts ");
+          console.log(data.posts);
           setPost(data.posts[0]);
           setLoading(false);
           setError(false);
@@ -34,7 +37,7 @@ export default function PostPage() {
       }
     };
     fetchPost();
-  }, [postSlug]);
+  }, [postId]);
 
   useEffect(() => {
     try {
@@ -88,7 +91,7 @@ export default function PostPage() {
       <div className='max-w-4xl mx-auto w-full'>
         <CallToAction />
       </div>
-      <CommentSection postId={post._id} />
+      <CommentSection postId={post._id} postOwnerId={post.userId}/>
 
       <div className='flex flex-col justify-center items-center mb-5'>
         <h1 className='text-xl mt-5'>Recent articles</h1>

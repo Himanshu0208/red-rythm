@@ -2,7 +2,6 @@ import { Modal, Table, Button } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { FaCheck, FaTimes } from 'react-icons/fa';
 
 export default function DashComments() {
   const { currentUser } = useSelector((state) => state.user);
@@ -13,7 +12,7 @@ export default function DashComments() {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await fetch(`/api/comment/getcomments`);
+        const res = await fetch(`/api/comment/getcomments?userId=${currentUser._id}`);
         const data = await res.json();
         if (res.ok) {
           setComments(data.comments);
@@ -25,19 +24,18 @@ export default function DashComments() {
         console.log(error.message);
       }
     };
-    if (currentUser.isAdmin) {
-      fetchComments();
-    }
+    fetchComments();
   }, [currentUser._id]);
 
   const handleShowMore = async () => {
-    const startIndex = comments.length;
+    // const startIndex = comments.length;
     try {
       const res = await fetch(
-        `/api/comment/getcomments?startIndex=${startIndex}`
+        `/api/comment/getcomments?userId=${currentUser._id}`
       );
       const data = await res.json();
       if (res.ok) {
+        console.log(data);
         setComments((prev) => [...prev, ...data.comments]);
         if (data.comments.length < 9) {
           setShowMore(false);
@@ -73,7 +71,7 @@ export default function DashComments() {
 
   return (
     <div className='table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
-      {currentUser.isAdmin && comments.length > 0 ? (
+      {comments.length > 0 ? (
         <>
           <Table hoverable className='shadow-md'>
             <Table.Head>
@@ -136,7 +134,7 @@ export default function DashComments() {
             </h3>
             <div className='flex justify-center gap-4'>
               <Button color='failure' onClick={handleDeleteComment}>
-                Yes, I'm sure
+                Yes, I&apos;m sure
               </Button>
               <Button color='gray' onClick={() => setShowModal(false)}>
                 No, cancel
