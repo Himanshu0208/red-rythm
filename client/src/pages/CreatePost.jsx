@@ -61,6 +61,7 @@ export default function CreatePost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log(formData);
       const res = await fetch('/api/post/create', {
         method: 'POST',
         headers: {
