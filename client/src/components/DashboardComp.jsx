@@ -3,8 +3,7 @@ import { useSelector } from 'react-redux';
 import {
   HiAnnotation,
   HiArrowNarrowUp,
-  HiDocumentText,
-  HiOutlineUserGroup,
+  HiDocumentText
 } from 'react-icons/hi';
 import { Button, Table } from 'flowbite-react';
 import { Link } from 'react-router-dom';
