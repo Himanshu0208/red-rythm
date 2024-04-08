@@ -4,13 +4,13 @@ export default function About() {
       <div className='max-w-2xl mx-auto p-3 text-center'>
         <div>
           <h1 className='text-4xl font font-semibold text-center my-7'>
-            About Red Rythm
+            About Cycle Sync
           </h1>
           <div className='text-md text-gray-500 flex flex-col gap-6'>
-          <p>Welcome to Red Rythm, a platform dedicated to fostering open dialogue and sharing knowledge about menstrual health and well-being. At Red Rythm, we believe in breaking the silence surrounding menstruation and empowering individuals to understand and embrace their bodies natural rhythms.</p>
+          <p>Welcome to Cycle Sync, a platform dedicated to fostering open dialogue and sharing knowledge about menstrual health and well-being. At Cycle Sync, we believe in breaking the silence surrounding menstruation and empowering individuals to understand and embrace their bodies natural rhythms.</p>
 
           <h3 className="font-semibold text-2xl">Our Mission</h3>
-          <p>Red Rythm was founded with a mission to provide a safe, supportive, and informative space for individuals of all genders to explore and discuss topics related to the menstrual cycle. We aim to challenge stigma, promote menstrual hygiene, and advocate for menstrual equity through education, advocacy, and community engagement.</p>
+          <p>Cycle Sync was founded with a mission to provide a safe, supportive, and informative space for individuals of all genders to explore and discuss topics related to the menstrual cycle. We aim to challenge stigma, promote menstrual hygiene, and advocate for menstrual equity through education, advocacy, and community engagement.</p>
 
           <h3 className="font-semibold text-2xl">What We Offer</h3>
           <ul className="flex flex-col gap-[40px]">
@@ -20,10 +20,10 @@ export default function About() {
           </ul>
 
           <h3 className="font-semibold text-2xl">Our Commitment</h3>
-          <p >At Red Rythm, we are committed to inclusivity, diversity, and accessibility. We strive to create a welcoming space where all individuals feel respected, valued, and heard. We prioritize accuracy, reliability, and evidence-based information in all our content, ensuring that our community members have access to trustworthy resources for their menstrual health needs.</p>
+          <p >At Cycle Sync, we are committed to inclusivity, diversity, and accessibility. We strive to create a welcoming space where all individuals feel respected, valued, and heard. We prioritize accuracy, reliability, and evidence-based information in all our content, ensuring that our community members have access to trustworthy resources for their menstrual health needs.</p>
 
           <h3 className="font-semibold text-2xl">Join Our Community</h3>
-          <p>Whether you&apos;re here to learn, share, or connect, we invite you to become a part of the Red Rythm community. Together, let&apos;s break the stigma, celebrate our bodies, and embrace the beautiful rhythm of menstruation.</p>
+          <p>Whether you&apos;re here to learn, share, or connect, we invite you to become a part of the Cycle Sync community. Together, let&apos;s break the stigma, celebrate our bodies, and embrace the beautiful rhythm of menstruation.</p>
 
           </div>
         </div>

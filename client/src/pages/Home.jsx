@@ -16,9 +16,9 @@ export default function Home() {
   return (
     <div>
       <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto '>
-        <h1 className='text-3xl font-bold lg:text-6xl'>Welcome to Red Rythm</h1>
+        <h1 className='text-3xl font-bold lg:text-6xl'>Welcome to Cycle Sync</h1>
         <p className='text-gray-500 text-base sm:text-base max-w-[800px]'>
-        Welcome to Red Rythm, a platform dedicated to fostering open dialogue and sharing knowledge about menstrual health and well-being. At Red Rythm, we believe in breaking the silence surrounding menstruation and empowering individuals to understand and embrace their bodies natural rhythms.
+        Welcome to Cycle Sync, a platform dedicated to fostering open dialogue and sharing knowledge about menstrual health and well-being. At Cycle Sync, we believe in breaking the silence surrounding menstruation and empowering individuals to understand and embrace their bodies natural rhythms.
         </p>
         <Link
           to='/search'
